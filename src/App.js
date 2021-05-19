@@ -50,6 +50,15 @@ removeShelf = (shelf) => {
 
 updateVal = (val) => {
   BooksAPI.search(val).then((res)=>{
+      if (Array.isArray(res)){
+        for (let r of res){
+          for (let b of this.state.Books){
+            if (r.title == b.title){
+              r.shelf = b.shelf
+            }
+          }
+        }
+      }
       this.setState(()=> ({
         Val: val,
         Searchresults: Array.isArray(res) ? res : []
