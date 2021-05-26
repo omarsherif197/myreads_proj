@@ -26,8 +26,10 @@ componentDidMount(){
           this.setState({
               Books: books
           })
+          localStorage.setItem("Books",JSON.stringify(books))
       }
       )
+      localStorage.setItem("Shelves",JSON.stringify(this.state.Shelves))
     }
    
 }
